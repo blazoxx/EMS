@@ -4,9 +4,10 @@ import EmployeeDashboard from "./components/Dashboard/EmployeeDashboard";
 
 const App = () => {
   return (
-    <div className="text-white">
+    <div className="text-white w-screen">
       <>
         {/* <Login /> */}
+        {/* <EmployeeDashboard /> */}
         <EmployeeDashboard />
       </>
     </div>
