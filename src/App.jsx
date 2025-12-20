@@ -12,11 +12,13 @@ const App = () => {
     getLocalStorage();
   }, []);
 
+  localStorage.clear();
+
   return (
     <div className="text-white w-full overflow-x-hidden">
       <>
         <Login />
-        <EmployeeDashboard />
+        {/* <EmployeeDashboard /> */}
         <AdminDashboard />
       </>
     </div>
