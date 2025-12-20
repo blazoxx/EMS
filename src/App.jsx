@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Login from "./components/Auth/Login";
 import EmployeeDashboard from "./components/Dashboard/EmployeeDashboard";
+import AdminDashboard from "./components/Dashboard/AdminDashboard";
+import { setLocalStorage } from "./utils/localStorage";
+import { getLocalStorage } from "./utils/localStorage";
 
 const App = () => {
+
+  useEffect(() => {
+    setLocalStorage();
+    getLocalStorage();
+  }, []);
+
   return (
-    <div className="text-white w-screen">
+    <div className="text-white w-full overflow-x-hidden">
       <>
-        {/* <Login /> */}
-        {/* <EmployeeDashboard /> */}
+        <Login />
         <EmployeeDashboard />
+        <AdminDashboard />
       </>
     </div>
   );
