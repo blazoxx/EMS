@@ -3,12 +3,15 @@ import Header from "../other/Header";
 import TaskWindow from "../other/TaskWindow";
 import TaskList from "../TaskList/TaskList";
 
-const EmployeeDashboard = () => {
+const EmployeeDashboard = ({data}) => {
+
+  // console.log(data)
+
   return (
     <div className="bg-[#1c1c1c] h-screen md:p-10 p-5">
-      <Header />
-      <TaskWindow />
-      <TaskList />
+      <Header data={data}/>
+      <TaskWindow data={data}/>
+      <TaskList data={data}/>
     </div>
   );
 };
