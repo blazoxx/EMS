@@ -16,10 +16,13 @@ const TaskList = ({ data }) => {
       {data.tasks.map((task, index) => (
         <div
           key={index}
-          className="noScroll shrink-0 h-68 sm:w-68 w-56 rounded-xl overflow-auto"
+          className="relative noScroll shrink-0 h-68 sm:w-68 w-56 rounded-xl overflow-hidden"
           style={{ backgroundColor: getBackgroundColor(index) }}
         >
-          <div className="flex justify-between items-baseline p-3">
+          <div 
+            className="sticky top-0 z-10 flex justify-between items-baseline p-3"
+            style={{ backgroundColor: getBackgroundColor(index) }}
+          >
             <h2
               className="px-3 py-1 rounded font-semibold text-sm"
               style={{
@@ -35,14 +38,28 @@ const TaskList = ({ data }) => {
             </h2>
             <h3 className="text-sm font-semibold">{task.date}</h3>
           </div>
-          <h2 className="mt-4 px-4 text-xl font-semibold">{task.title}</h2>
-          <p className="text-sm px-4">{task.description}</p>
+          
+          <div className="noScroll overflow-auto h-full pb-14 md:pb-20">
+            <h2 className="px-4 text-xl font-semibold">{task.title}</h2>
+            <p className="text-sm px-4">{task.description}</p>
+            
+            {/* Buttons inline on mobile */}
+            <div className="flex md:hidden justify-between items-center p-2 mt-4">
+              <button className="bg-green-500 py-1 px-2 text-xs font-semibold rounded m-1 active:scale-95">
+                Mark as Completed
+              </button>
+              <button className="bg-red-500 py-1 px-2 text-xs font-semibold rounded m-1 active:scale-95">
+                Mark as Failed
+              </button>
+            </div>
+          </div>
 
-          <div className="flex p-2 justify-between items-center">
-            <button className="bg-green-500 py-1 px-2 text-xs font-semibold rounded m-1 md:mt-5 active:scale-95">
+          {/* Buttons fixed at bottom on desktop */}
+          <div className="hidden md:flex absolute bottom-0 left-0 right-0 p-2 justify-between items-center">
+            <button className="bg-green-500 py-1 px-2 text-sm font-semibold rounded m-1 active:scale-95 cursor-pointer">
               Mark as Completed
             </button>
-            <button className="bg-red-500 py-1 px-2 text-xs font-semibold rounded m-1 md:mt-5 active:scale-95">
+            <button className="bg-red-500 py-1 px-2 text-sm font-semibold rounded m-1 active:scale-95 cursor-pointer">
               Mark as Failed
             </button>
           </div>
