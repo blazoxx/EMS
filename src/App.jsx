@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Login from "./components/Auth/Login";
 import EmployeeDashboard from "./components/Dashboard/EmployeeDashboard";
 import AdminDashboard from "./components/Dashboard/AdminDashboard";
@@ -16,9 +16,11 @@ const App = () => {
     if(loggedInUser){
       const userData = JSON.parse(loggedInUser);
       setUser(userData);
-      if(userData.data) {
-        setLoggedInUserData(userData.data);
-      }
+      // if(userData.data) {
+      //   setLoggedInUserData(userData.data);
+      // }
+      //  OR
+      setLoggedInUserData(userData.data || null);
     }
   },[])
 
